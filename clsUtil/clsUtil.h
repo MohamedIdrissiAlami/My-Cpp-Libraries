@@ -1,9 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include "clsDate.h"
-
-using namespace std;
+#include "../clsDate/clsDate.h";
 
 class clsUtil
 {
@@ -69,10 +67,10 @@ public:
         }
     }
 
-    static  string GenerateWord(enCharType CharType, short Length)
+    static  std::string GenerateWord(enCharType CharType, short Length)
 
     {
-        string Word;
+        std::string Word;
 
         for (int i = 1; i <= Length; i++)
 
@@ -84,10 +82,10 @@ public:
         return Word;
     }
 
-    static string  GenerateKey(enCharType CharType = CapitalLetter)
+    static std::string  GenerateKey(enCharType CharType = CapitalLetter)
     {
 
-        string Key = "";
+        std::string Key = "";
 
 
         Key = GenerateWord(CharType, 4) + "-";
@@ -105,8 +103,8 @@ public:
         for (int i = 1; i <= NumberOfKeys; i++)
 
         {
-            cout << "Key [" << i << "] : ";
-            cout << GenerateKey(CharType) << endl;
+            std::cout << "Key [" << i << "] : ";
+            std::cout << GenerateKey(CharType) << "\n";
         }
 
     }
@@ -117,14 +115,14 @@ public:
             arr[i] = RandomNumber(From, To);
     }
 
-    static void FillArrayWithRandomWords(string arr[100], int arrLength, enCharType CharType, short Wordlength)
+    static void FillArrayWithRandomWords(std::string arr[100], int arrLength, enCharType CharType, short Wordlength)
     {
         for (int i = 0; i < arrLength; i++)
             arr[i] = GenerateWord(CharType, Wordlength);
 
     }
 
-    static void FillArrayWithRandomKeys(string arr[100], int arrLength, enCharType CharType)
+    static void FillArrayWithRandomKeys(std::string arr[100], int arrLength, enCharType CharType)
     {
         for (int i = 0; i < arrLength; i++)
             arr[i] = GenerateKey(CharType);
@@ -166,9 +164,9 @@ public:
         B = Temp;
     }
 
-    static  void Swap(string& A, string& B)
+    static  void Swap(std::string& A, std::string& B)
     {
-        string Temp;
+        std::string Temp;
 
         Temp = A;
         A = B;
@@ -191,7 +189,7 @@ public:
 
     }
 
-    static  void ShuffleArray(string arr[100], int arrLength)
+    static  void ShuffleArray(std::string arr[100], int arrLength)
     {
 
         for (int i = 0; i < arrLength; i++)
@@ -201,20 +199,20 @@ public:
 
     }
 
-    static string  Tabs(short NumberOfTabs)
+    static std::string  Tabs(short NumberOfTabs)
     {
-        string t = "";
+        std::string t = "";
 
         for (int i = 1; i < NumberOfTabs; i++)
         {
             t = t + "\t";
-            cout << t;
+            std::cout << t;
         }
         return t;
 
     }
 
-    static string  EncryptText(string Text, short EncryptionKey)
+    static std::string  EncryptText(std::string Text, short EncryptionKey)
     {
 
         for (int i = 0; i <= Text.length(); i++)
@@ -228,7 +226,7 @@ public:
 
     }
 
-    static string  DecryptText(string Text, short EncryptionKey)
+    static std::string  DecryptText(std::string Text, short EncryptionKey)
     {
 
         for (int i = 0; i <= Text.length(); i++)

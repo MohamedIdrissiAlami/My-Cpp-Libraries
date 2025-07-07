@@ -1,8 +1,8 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include "clsString.h"
-#include "clsDate.h"
+#include "../clsString/clsString.h";
+#include "../clsDate/clsDate.h";
 
 class clsInputValidate
 {
@@ -39,38 +39,38 @@ public:
 	}
 
 	template <typename T>
-	static T ReadNumber(string Message="", string ErrorMessage = "Invalid Number, Enter again\n")
+	static T ReadNumber(std::string Message="", std::string ErrorMessage = "Invalid Number, Enter again\n")
 	{
 		T Number=0;
-		cout << Message;
-		while (!(cin >> Number)) {
-			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			cout << ErrorMessage;
+			std::cout << Message;
+		while (!(std::cin >> Number)) {
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			std::cout << ErrorMessage;
 		}
 		return Number;
 	}
 
 	template <typename T>
-	static T ReadNumberBetween(T From, T To,string Message="", string ErrorMessage = "Number is not within range, Enter again:\n")
+	static T ReadNumberBetween(T From, T To,std::string Message="", std::string ErrorMessage = "Number is not within range, Enter again:\n")
 	{
 		int Number = 0;
 		do
 		{
 			if (!IsNumberBetween<T>((Number= ReadNumber<T>(Message)), From, To))
-				cout << ErrorMessage;
+				std::cout << ErrorMessage;
 		} while (!IsNumberBetween<T>(Number, From, To));
 		return Number;
 	}
 
 	template <typename T>
-	static T ReadPositiveNumber(string Message = "")
+	static T ReadPositiveNumber(std::string Message = "")
 	{
 		T Number = 0;
 		do
 		{
 			if ((Number = ReadNumber<T>(Message)) < 0)
-				cout << "\nTry again with a positive number..";
+				std::cout << "\nTry again with a positive number..";
 		} while (Number<0);
 		return Number;
 	}
@@ -80,19 +80,19 @@ public:
 		return	clsDate::IsValidDate(Date);
 	}
 
-	static string ReadString(string Message = "")
+	static std::string ReadString(std::string Message = "")
 	{
-		cout << Message;
-		string S1;
-		getline(cin >> ws, S1);
+		std::cout << Message;
+		std::string S1;
+		getline(std::cin >> std::ws, S1);
 		return S1;
 	}
 	
-	static char ReadChar(string Message = "")
+	static char ReadChar(std::string Message = "")
 	{
-		cout << Message;
+		std::cout << Message;
 		char Ch = ' ';
-		cin >> Ch;
+		std::cin >> Ch;
 		return Ch;
 	}
 };

@@ -3,9 +3,8 @@
 
 #include<iostream>
 #include<string>
-#include "clsString.h"
+#include "../clsString/clsString.h";
 
-using namespace std;
 
 class clsDate
 {
@@ -27,10 +26,10 @@ public:
 		_Year = now->tm_year + 1900;
 	}
 
-	clsDate(string sDate)
+	clsDate(std::string sDate)
 	{
 		
-		vector <string> vDate;
+		std::vector <std::string> vDate;
 		vDate = clsString::Split(sDate, "/");
 
 		_Day = stoi(vDate[0]);
@@ -87,7 +86,7 @@ public:
 
    void Print()
 	{
-		cout << DateToString() << endl;
+		std::cout << DateToString() << std::endl;
 	}
 
 	static clsDate GetSystemDate()
@@ -142,12 +141,12 @@ public:
 		return IsValidDate(*this);
 	}
 
-	static string DateToString(clsDate Date)
+	static std::string DateToString(clsDate Date)
 	{
-		return  to_string(Date.Day) + "/" + to_string(Date.Month) + "/" + to_string(Date.Year);
+		return  std::to_string(Date.Day) + "/" + std::to_string(Date.Month) + "/" + std::to_string(Date.Year);
 	}
 
-    string DateToString()
+    std::string DateToString()
 	{
 		return  DateToString(*this);
 	}
@@ -268,35 +267,35 @@ public:
 		return DayOfWeekOrder(_Day, _Month, _Year);
 	}
 
-	static string DayShortName(short DayOfWeekOrder)
+	static std::string DayShortName(short DayOfWeekOrder)
 	{
-		string arrDayNames[] = { "Sun","Mon","Tue","Wed","Thu","Fri","Sat" };
+		std::string arrDayNames[] = { "Sun","Mon","Tue","Wed","Thu","Fri","Sat" };
 
 		return arrDayNames[DayOfWeekOrder];
 
 	}
 
-	static string DayShortName(short Day, short Month, short Year)
+	static std::string DayShortName(short Day, short Month, short Year)
 	{
 
-		string arrDayNames[] = { "Sun","Mon","Tue","Wed","Thu","Fri","Sat" };
+		std::string arrDayNames[] = { "Sun","Mon","Tue","Wed","Thu","Fri","Sat" };
 
 		return arrDayNames[DayOfWeekOrder(Day, Month, Year)];
 
 	}
 
-	string DayShortName()
+	std::string DayShortName()
 	{
 
-		string arrDayNames[] = { "Sun","Mon","Tue","Wed","Thu","Fri","Sat" };
+		std::string arrDayNames[] = { "Sun","Mon","Tue","Wed","Thu","Fri","Sat" };
 
 		return arrDayNames[DayOfWeekOrder(_Day, _Month, _Year)];
 
 	}
 
-	static string MonthShortName(short MonthNumber)
+	static std::string MonthShortName(short MonthNumber)
 	{
-		string Months[12] = { "Jan", "Feb", "Mar",
+		std::string Months[12] = { "Jan", "Feb", "Mar",
 						   "Apr", "May", "Jun",
 						   "Jul", "Aug", "Sep",
 						   "Oct", "Nov", "Dec"
@@ -305,7 +304,7 @@ public:
 		return (Months[MonthNumber - 1]);
 	}
 
-	string MonthShortName()
+	std::string MonthShortName()
 	{
 
 		return MonthShortName(_Month);
