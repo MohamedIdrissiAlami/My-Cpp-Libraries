@@ -144,7 +144,7 @@ public:
 	{
 		if (Head == nullptr)
 		{
-			cout << "\nempty list (nullptr).";
+			std::cout << "\nempty list (nullptr).";
 			return;
 		}
 		Node* Current = Head;
